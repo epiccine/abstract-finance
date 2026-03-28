@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>ABSTRACT Finance | Premium Asset Financing</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: { navy: '#0A2540', gold: '#D4AF37', slate: '#F8F9FA' }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Additional micro-interactions and responsive tweaks */
+        .card-hover {
+            transition: all 0.3s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+        }
+        .card-hover:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 20px 35px -12px rgba(0,0,0,0.4);
+            border-color: rgba(212, 175, 55, 0.5);
+        }
+        .product-card {
+            background: rgba(10, 37, 64, 0.6);
+            backdrop-filter: blur(4px);
+            transition: all 0.2s ease;
+        }
+        .product-card:hover {
+            background: rgba(212, 175, 55, 0.1);
+            border-left-width: 4px;
+            border-left-color: #D4AF37;
+        }
+        .badge-gold {
+            background: linear-gradient(120deg, rgba(212,175,55,0.2), rgba(212,175,55,0.05));
+            border: 1px solid rgba(212,175,55,0.3);
+        }
+    </style>
+</head>
+<body class="antialiased bg-navy text-slate">
+
+    <!-- Navigation (sticky glass) -->
+    <nav class="fixed w-full z-50 glass px-6 py-4 flex justify-between items-center" data-aos="fade-down">
+        <div class="text-2xl font-bold tracking-wider text-gold">ABSTRACT.</div>
+        <div class="flex items-center space-x-5">
+            <a href="index.html" class="text-sm font-medium hover:text-gold transition hidden md:inline-block">Home</a>
+            <a href="instant-loan.html" class="text-sm font-medium hover:text-gold transition hidden md:inline-block">Instant Loans</a>
+            <a href="#products" class="text-sm font-medium hover:text-gold transition hidden md:inline-block">Products</a>
+            <button id="authBtn" class="text-sm font-medium hover:text-gold transition">Sign In</button>
+            <a href="instant-loan.html" class="btn-gold px-5 py-2 rounded-full text-sm font-bold">Apply Now</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section (Elevated) -->
+    <header class="min-h-[90vh] flex items-center justify-center pt-24 px-6 relative">
+        <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&fit=crop&q=80')] bg-cover bg-center opacity-10"></div>
+        <div class="absolute inset-0 bg-gradient-to-b from-navy/60 via-navy/80 to-navy"></div>
+        <div class="relative z-10 text-center max-w-4xl" data-aos="fade-up">
+            <h1 class="text-5xl md:text-7xl font-bold mb-6">Financing,<br><span class="text-gold">Elevated.</span></h1>
+            <p class="text-lg md:text-xl text-slate/80 mb-8 max-w-2xl mx-auto">Access 1M+ Shilling credit lines with zero CRB hurdles. 40-hour disbursements. 3-month interest-free grace periods.</p>
+            <div class="flex flex-wrap justify-center gap-4">
+                <a href="instant-loan.html" class="btn-gold px-8 py-4 rounded-full text-lg font-bold inline-block shadow-xl">Experience The Edge →</a>
+                <a href="#products" class="px-8 py-4 rounded-full text-lg font-semibold border border-gold/40 hover:bg-gold/10 transition">Explore Products</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Dynamic Advantage Section (distance reduced, cards dynamic) -->
+    <section class="py-12 px-6 max-w-6xl mx-auto" data-aos="fade-up">
+        <h2 class="text-3xl font-bold text-center mb-8">The Abstract Advantage</h2>
+        <div class="grid md:grid-cols-2 gap-6 md:gap-8" id="dynamicCompareCards">
+            <!-- Dynamic content will be injected via JS but fallback structure remains -->
+            <div class="glass p-8 rounded-2xl border border-red-500/20 opacity-50 transition" id="traditionalCard">
+                <h3 class="text-xl font-bold mb-4 text-red-400">Traditional Banks / CRB</h3>
+                <ul class="space-y-3 text-slate/70" id="traditionalList">
+                    <li>❌ Weeks of paperwork & waiting</li>
+                    <li>❌ Rigid CRB credit checks</li>
+                    <li>❌ Immediate interest accumulation</li>
+                </ul>
+            </div>
+            <div class="glass p-8 rounded-2xl border-gold/20 shadow-md" id="abstractCard">
+                <h3 class="text-xl font-bold mb-4 text-gold">ABSTRACT Finance</h3>
+                <ul class="space-y-3" id="abstractList">
+                    <li>✅ 40-Hour Disbursement SLA</li>
+                    <li>✅ Asset-backed, CRB-independent</li>
+                    <li>✅ 4-Month Grace Period Tracker</li>
+                    <li>✅ Transparent 10% Service Fee</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Product Highlights Section (Gateway to product page) -->
+    <section id="products" class="py-16 px-6 max-w-7xl mx-auto" data-aos="fade-up">
+        <div class="text-center mb-12">
+            <span class="text-gold text-sm font-semibold tracking-wider uppercase bg-gold/10 px-4 py-1 rounded-full">Tailored Solutions</span>
+            <h2 class="text-3xl md:text-4xl font-bold mt-3">Product Highlights</h2>
+            <p class="text-slate/60 max-w-2xl mx-auto mt-2">Explore our premium financing categories — click any to view details on our product page.</p>
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5" id="productHighlightsGrid">
+            <!-- dynamic product highlights (first 6 featured) will load via JS, but we keep static container -->
+        </div>
+        <div class="text-center mt-10">
+            <a href="products-page.html" class="inline-flex items-center gap-2 text-gold border-b border-gold/40 hover:border-gold pb-1 font-medium transition">
+                View all financing products <span>→</span>
+            </a>
+        </div>
+    </section>
+
+    <!-- Trust & Statistics row -->
+    <section class="py-8 border-t border-white/5 border-b border-white/5 bg-navy/40">
+        <div class="max-w-6xl mx-auto px-6 flex flex-wrap justify-between items-center gap-6 text-center">
+            <div><span class="text-2xl font-bold text-gold">40h</span><p class="text-xs text-slate/50">Avg. Disbursement</p></div>
+            <div><span class="text-2xl font-bold text-gold">₿ 1.2B+</span><p class="text-xs text-slate/50">Total Financed</p></div>
+            <div><span class="text-2xl font-bold text-gold">3,400+</span><p class="text-xs text-slate/50">Active Clients</p></div>
+            <div><span class="text-2xl font-bold text-gold">0 CRB</span><p class="text-xs text-slate/50">Asset-backed only</p></div>
+        </div>
+    </section>
+
+    <!-- Floating WhatsApp Support -->
+    <a href="https://wa.me/254700000000?text=Hi%20Abstract%20Finance,%20I%20am%20interested%20in%20premium%20financing." target="_blank" class="fixed bottom-6 right-6 bg-[#25D366] text-white p-4 rounded-full shadow-lg hover:scale-110 transition z-50 flex items-center gap-2">
+        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.347-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.876 1.213 3.074.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
+        <span class="font-bold hidden md:inline">VIP Support</span>
+    </a>
+
+    <div id="toastContainer" class="fixed bottom-6 left-6 z-50 flex flex-col gap-2"></div>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-app.js";
+        import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-auth.js";
+        import { getFirestore, collection, addDoc, getDocs } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-firestore.js";
+        
+        const firebaseConfig = {
+          apiKey: "AIzaSyCglaJvCNoN33VuslJh-gFiQ98jxTcgPmo",
+          authDomain: "abstract-finance.firebaseapp.com",
+          projectId: "abstract-finance",
+          storageBucket: "abstract-finance.firebasestorage.app",
+          messagingSenderId: "869055681176",
+          appId: "1:869055681176:web:d801ee5f5039038a0836ed",
+          measurementId: "G-412M905P2E"
+        };
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+        const db = getFirestore(app);
+        
+        // DYNAMIC ADVANTAGE CARDS: Refresh with live/updated content
+        const updateAdvantageCards = () => {
+            const traditionalList = document.getElementById('traditionalList');
+            const abstractList = document.getElementById('abstractList');
+            if(traditionalList && abstractList) {
+                // making them dynamic: you could fetch from firestore but for live demo we inject richer data
+                traditionalList.innerHTML = `
+                    <li>❌ 10-30 day approval delays</li>
+                    <li>❌ CRB blacklist denial</li>
+                    <li>❌ Compound interest day 1</li>
+                    <li>❌ Hidden ledger fees</li>
+                `;
+                abstractList.innerHTML = `
+                    <li>✅ <strong>40-Hour Disbursement SLA</strong> (cash within 2 days)</li>
+                    <li>✅ Asset-backed approval, <span class="text-gold">CRB-irrelevant</span></li>
+                    <li>✅ <strong>3-Month interest-free grace</strong> on all products</li>
+                    <li>✅ One-time 10% service fee (no hidden costs)</li>
+                    <li>✅ Flexible repayment up to 12 months</li>
+                `;
+            }
+        };
+        
+        // PRODUCT HIGHLIGHTS (9 products) displayed on homepage as teaser cards linking to product page with query param
+        const allProducts = [
+            { name: "Vehicle Financing", tagline: "Cars, SUVs, pickup trucks", icon: "🚗", slug: "vehicle" },
+            { name: "Tractor & Commercial Truck", tagline: "Farm & logistics fleets", icon: "🚜", slug: "tractor" },
+            { name: "Business Loan", tagline: "Working capital expansion", icon: "🏢", slug: "business" },
+            { name: "Electronic Gadget", tagline: "Laptops, cameras, consoles", icon: "💻", slug: "gadget" },
+            { name: "Mobile Phone Financing", tagline: "iPhone, Samsung, high-end", icon: "📱", slug: "mobile" },
+            { name: "School Fees Financing", tagline: "Primary to university", icon: "🎓", slug: "schoolfees" },
+            { name: "Machinery Financing", tagline: "Industrial & construction", icon: "⚙️", slug: "machinery" },
+            { name: "Company Salary Financing", tagline: "Employee welfare loans", icon: "👥", slug: "salary" },
+            { name: "Medical Financing", tagline: "Surgeries & treatment plans", icon: "🏥", slug: "medical" }
+        ];
+        
+        function renderProductHighlights() {
+            const container = document.getElementById('productHighlightsGrid');
+            if(!container) return;
+            // Show first 6 products as featured highlights
+            const featured = allProducts.slice(0,6);
+            container.innerHTML = featured.map(prod => `
+                <div class="product-card glass rounded-xl p-5 border border-white/10 cursor-pointer transition-all hover:border-gold/50 card-hover" data-product="${prod.slug}">
+                    <div class="flex items-start gap-3">
+                        <span class="text-3xl">${prod.icon}</span>
+                        <div>
+                            <h3 class="font-bold text-lg text-gold">${prod.name}</h3>
+                            <p class="text-sm text-slate/60 mt-1">${prod.tagline}</p>
+                            <div class="mt-3 text-xs text-gold/80 flex items-center gap-1">Learn more <span>→</span></div>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+            // attach click events to go to product page with product param
+            document.querySelectorAll('.product-card').forEach(card => {
+                card.addEventListener('click', (e) => {
+                    const productSlug = card.getAttribute('data-product');
+                    window.location.href = `products-page.html?highlight=${productSlug}`;
+                });
+            });
+        }
+        
+        // Trust signals toast (dynamic activity)
+        const trustToasts = [
+            "🔥 KES 450K approved for Toyota Axio in Mombasa",
+            "⚡️ Tractor financing closed in 28hrs - Nakuru",
+            "📱 15 iPhone 15 Pro Max units financed for SME",
+            "✅ School fees plan for 3 kids approved (KES 280K)",
+            "🚚 Commercial truck loan just disbursed - Kisumu"
+        ];
+        function showTrustSignal() {
+            const container = document.getElementById('toastContainer');
+            if (!container) return;
+            const text = trustToasts[Math.floor(Math.random() * trustToasts.length)];
+            const toast = document.createElement('div');
+            toast.className = 'glass px-6 py-3 rounded-xl border border-gold/30 shadow-lg toast-animate text-sm font-medium text-slate flex items-center gap-3';
+            toast.innerHTML = `<span class="flex h-3 w-3 relative"><span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span><span class="relative inline-flex rounded-full h-3 w-3 bg-green-500"></span></span> ${text}`;
+            container.appendChild(toast);
+            setTimeout(() => {
+                toast.style.opacity = '0';
+                toast.style.transform = 'translateY(100%)';
+                setTimeout(() => toast.remove(), 500);
+            }, 5500);
+        }
+        setInterval(showTrustSignal, 14000);
+        
+        // Initialize AOS and dynamic content
+        AOS.init({ once: true, duration: 700 });
+        updateAdvantageCards();
+        renderProductHighlights();
+        
+        // Simple Auth button mock (future upgrade)
+        const authBtn = document.getElementById('authBtn');
+        if(authBtn){
+            authBtn.addEventListener('click', () => {
+                alert("🔐 Abstract Finance Client Portal — coming soon. For now, use Instant Loan engine.");
+            });
+        }
+        
+        // optional: firestore lead capture from instant loan page is separate. This homepage remains intact.
+        console.log("Homepage enhanced: dynamic cards + product highlights + reduced gap");
+    </script>
+    <script>
+        // additional inline for AOS reload safety
+        window.addEventListener('load', () => {
+            if(typeof AOS !== 'undefined') AOS.refresh();
+        });
+    </script>
+</body>
+</html>
