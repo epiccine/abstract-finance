@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ABSTRACT Finance | Product Catalog</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: { navy: '#0A2540', gold: '#D4AF37', slate: '#F8F9FA' }
+                }
+            }
+        }
+    </script>
+    <style>
+        .product-detail-card {
+            background: linear-gradient(135deg, rgba(10,37,64,0.95), rgba(10,37,64,0.85));
+            backdrop-filter: blur(8px);
+            transition: all 0.3s ease;
+        }
+        .feature-badge {
+            background: rgba(212,175,55,0.15);
+            border: 1px solid rgba(212,175,55,0.3);
+            border-radius: 100px;
+            padding: 4px 12px;
+            font-size: 0.75rem;
+        }
+        .apply-cta {
+            background: linear-gradient(135deg, #D4AF37, #B8942E);
+            transition: all 0.2s;
+        }
+        .apply-cta:hover {
+            transform: scale(1.02);
+            box-shadow: 0 10px 25px -5px rgba(212,175,55,0.4);
+        }
+    </style>
+</head>
+<body class="bg-navy text-slate">
+    <nav class="fixed w-full z-50 glass px-6 py-4 flex justify-between items-center">
+        <a href="index.html" class="text-2xl font-bold tracking-wider text-gold">ABSTRACT.</a>
+        <div class="space-x-4">
+            <a href="index.html" class="text-sm font-medium hover:text-gold transition">Home</a>
+            <a href="instant-loan.html" class="text-sm font-medium hover:text-gold transition">Instant Loan</a>
+            <a href="products-page.html" class="text-sm font-medium text-gold transition">Products</a>
+            <a href="instant-loan.html" class="btn-gold px-5 py-2 rounded-full text-sm font-bold">Apply</a>
+        </div>
+    </nav>
+
+    <div class="pt-28 px-6 max-w-7xl mx-auto pb-20">
+        <div class="text-center mb-12" data-aos="fade-up">
+            <h1 class="text-4xl md:text-5xl font-bold mb-4">Complete <span class="text-gold">Financing</span> Solutions</h1>
+            <p class="text-slate/70 max-w-2xl mx-auto">Asset-backed financing for every need. Zero CRB hurdles, 40-hour disbursement, 3-month grace period.</p>
+        </div>
+
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6" id="allProductsGrid">
+            <!-- Dynamic products will load here -->
+        </div>
+    </div>
+
+    <!-- Product Modal (Quick View) -->
+    <div id="productModal" class="fixed inset-0 bg-black/70 backdrop-blur-sm z-50 hidden items-center justify-center p-4">
+        <div class="glass rounded-2xl max-w-2xl w-full max-h-[85vh] overflow-y-auto p-6 relative">
+            <button onclick="closeModal()" class="absolute top-4 right-4 text-gold hover:text-white text-2xl">&times;</button>
+            <div id="modalContent"></div>
+        </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script type="module" src="products-logic.js"></script>
+    <script>AOS.init({ once: true });</script>
+</body>
+</html>
